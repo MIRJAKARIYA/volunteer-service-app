@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Footer from "../Footer/Footer";
 import SingleVolunteer from "../SingleVolunteer/SingleVolunteer";
 
 const Home = () => {
@@ -14,16 +15,17 @@ const Home = () => {
       <div className="flex justify-center w-3/4 mx-auto mb-10">
         <input
           type="text"
-          placeholder="Type here"
-          class="input input-bordered rounded-tr-none rounded-br-none w-full max-w-[350px]"
+          placeholder="Search"
+          class="input input-bordered rounded-tr-none rounded-br-none w-full text-lg max-w-[350px]"
         />
-        <button className="bg-blue-500 px-6 text-white rounded-tr-lg rounded-br-lg text-lg">Search</button>
+        <button className="bg-blue-500 hover:bg-blue-700 duration-300 px-6 text-white rounded-tr-lg rounded-br-lg text-lg">Search</button>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-y-8 mt-5 lg:grid-cols-3 max-w-[1300px] mx-auto justify-items-center">
         {services.map((serv) => (
           <SingleVolunteer serv={serv} key={serv._id}></SingleVolunteer>
         ))}
       </div>
+      <Footer></Footer>
     </>
   );
 };
