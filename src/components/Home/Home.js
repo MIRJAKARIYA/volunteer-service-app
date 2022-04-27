@@ -11,7 +11,7 @@ const Home = () => {
   }, []);
   return (
     <>
-      <h2 className="text-center text-4xl font-bold my-6">I GROW BY HELPING PEOPLE IN NEED</h2>
+      <h2 className="text-center text-xl sm:text-2xl md:text-4xl font-bold my-6">I GROW BY HELPING PEOPLE IN NEED</h2>
       <div className="flex justify-center w-3/4 mx-auto mb-10">
         <input
           type="text"
