@@ -4,7 +4,7 @@ import { GrMenu } from 'react-icons/gr';
 import Logo from '../../images/logos/Group 1329.png';
 const Header = () => {
   return (
-    <div className="navbar bg-base-100 max-w-[1400px] mt-5 mx-auto">
+    <div className="navbar bg-base-100 max-w-[1400px] mx-auto">
       <div className="flex-1">
         <Link to="/" className="btn btn-ghost normal-case text-xl">
           <img src={Logo} className='w-40' alt="" />

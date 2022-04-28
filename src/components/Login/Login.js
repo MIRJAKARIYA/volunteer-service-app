@@ -7,32 +7,32 @@ const Login = () => {
         e.preventDefault();
     }
   return (
-    <div class="flow-root">
-        <div class="card mx-auto mt-36 flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+    <div className="flow-root">
+        <div className="card mx-auto mt-36 flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
           <form onSubmit={handleSubmit}>
-          <div class="card-body">
-            <div class="form-control">
-              <label class="label">
-                <span class="label-text">Email</span>
+          <div className="card-body">
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Email</span>
               </label>
               <input
                 type="email"
                 placeholder="email"
-                class="input input-bordered"
+                className="input input-bordered"
               />
             </div>
-            <div class="form-control">
-              <label class="label">
-                <span class="label-text">Password</span>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Password</span>
               </label>
               <input
                 type="text"
                 placeholder="password"
-                class="input input-bordered"
+                className="input input-bordered"
               />
             </div>
-            <div class="form-control mt-6">
-              <button class="btn btn-primary" type="submit">Login</button>
+            <div className="form-control mt-6">
+              <button className="btn btn-primary" type="submit">Login</button>
             </div>
           </div>
           </form>
