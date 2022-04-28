@@ -1,8 +1,11 @@
 import React from "react";
 import "./AddEvent.css";
 import { AiOutlinePlus } from 'react-icons/ai';
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../../firebase.init";
 
 const AddEvent = () => {
+  const [user] = useAuthState(auth);
   const handleAddEvent = e =>{
     e.preventDefault();
     const title = e.target.title.value;
@@ -16,6 +19,15 @@ const AddEvent = () => {
       banner
     }
 
+    fetch('http://localhost:5000/service', {
+      method: 'POST',
+      headers:{
+        'content-type':'application/json'
+      },
+      body:JSON.stringify(addedEvent)
+    })
+    .then(res=>res.json())
+    .then(data=> console.log(data))
   }
   return (
     <div className="add-event-container flow-root">
@@ -31,7 +43,7 @@ const AddEvent = () => {
                 type="text"
                 placeholder="Type here"
                 className="input input-bordered input-secondary w-full"
-                name="title"
+                name="title" required
               />
             </div>
             <div className="mt-4">
@@ -41,7 +53,7 @@ const AddEvent = () => {
               <textarea
                 className="textarea textarea-secondary w-full"
                 placeholder="Bio"
-                name="description"
+                name="description" required
               />
             </div>
           </div>
@@ -54,7 +66,7 @@ const AddEvent = () => {
                 type="date"
                 placeholder="Type here"
                 className="input input-bordered input-secondary  w-full"
-                name="date"
+                name="date" required
               />
             </div>
             <div className="mt-4">
@@ -63,7 +75,7 @@ const AddEvent = () => {
                 type="text"
                 placeholder="Type here"
                 className="input input-bordered input-secondary w-full"
-                name="banner"
+                name="banner" required
               />
             </div>
             <button type="submit" className="btn btn-outline btn-primary block ml-auto mt-5 ">
