@@ -35,6 +35,7 @@ const Header = () => {
           <Link className="mr-8 font-semibold" to="/addevent">
             Add Event
           </Link>
+          
           {
             user?<button onClick={handleSignOut} className="mr-8 font-semibold bg-blue-500 hover:bg-blue-700 duration-150 login-nav-extra-style">Sign Out</button>:<Link
             className="mr-8 font-semibold bg-blue-500 hover:bg-blue-700 duration-150 login-nav-extra-style"
@@ -43,6 +44,7 @@ const Header = () => {
             Login
           </Link>
           }
+          <img src={user?.photoURL} className='w-[40px] rounded-full' alt="" />
         </div>
         <div className="dropdown dropdown-end">
           <button className="md:hidden block text-2xl">
@@ -78,6 +80,9 @@ const Header = () => {
                 Login
               </Link>
               }
+            </li>
+            <li>
+              <img src={user?.photoURL} className='w-[80px]' style={{borderRadius: '50%'}} alt="" />
             </li>
           </ul>
         </div>

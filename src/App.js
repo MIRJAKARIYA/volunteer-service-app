@@ -9,6 +9,7 @@ import Register from './components/Register/Register';
 import ServiceDetail from './components/ServiceDetail/ServiceDetail';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
+import RequireAuth from './components/RequireAuth/RequireAuth';
 
 function App() {
   return (
@@ -20,7 +21,11 @@ function App() {
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/register' element={<Register></Register>}></Route>
         <Route path='/service/:serviceId' element={<ServiceDetail></ServiceDetail>}></Route>
-        <Route path='/addevent' element={<AddEvent></AddEvent>}></Route>
+        <Route path='/addevent' element={
+          <RequireAuth>
+            <AddEvent></AddEvent>
+          </RequireAuth>
+        }></Route>
         <Route path='/emailverification' element={<EmailVerification></EmailVerification>}></Route>
       </Routes>
     </div>
