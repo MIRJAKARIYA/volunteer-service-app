@@ -3,9 +3,11 @@ import "./AddEvent.css";
 import { AiOutlinePlus } from 'react-icons/ai';
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
+import { ToastContainer, toast } from "react-toastify";
 
 const AddEvent = () => {
   const [user] = useAuthState(auth);
+
   const handleAddEvent = e =>{
     e.preventDefault();
     const title = e.target.title.value;
@@ -16,18 +18,29 @@ const AddEvent = () => {
       title,
       description,
       date,
-      banner
+      banner,
+      email: user?.email
     }
 
     fetch('http://localhost:5000/service', {
       method: 'POST',
       headers:{
-        'content-type':'application/json'
+        'content-type':'application/json',
+        authorization:`Bearer ${localStorage.getItem('ACCESS_TOKEN')}`
       },
       body:JSON.stringify(addedEvent)
     })
     .then(res=>res.json())
-    .then(data=> console.log(data))
+    .then(data=> {
+      console.log(data)
+      if(data?.acknowledged){
+        toast('Event added successfully 😊');
+      }
+      else{
+        toast('Something wrong happend 😕')
+      }
+    })
+    e.target.reset();
   }
   return (
     <div className="add-event-container flow-root">
@@ -85,7 +98,7 @@ const AddEvent = () => {
               </div>
             </button>
           </div>
-          
+          <ToastContainer></ToastContainer>
         </div>
         
       </form>

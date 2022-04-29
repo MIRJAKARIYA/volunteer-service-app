@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useCreateUserWithEmailAndPassword, useUpdateProfile } from "react-firebase-hooks/auth";
 import { Link, useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
+import useToken from "../hooks/useToken";
 import SocialLogin from "../SocialLogin/SocialLogin";
 import "./Register.css";
 const Register = () => {
@@ -10,6 +11,7 @@ const Register = () => {
   const [updateProfile] = useUpdateProfile(auth);
   const navigate = useNavigate();
   const [createUserWithEmailAndPassword,user] = useCreateUserWithEmailAndPassword(auth,{sendEmailVerification: true});
+  const [token] = useToken(user?.user?.email)
     const handleSubmit = async e =>{
         e.preventDefault();
         const name = e.target.name.value;
@@ -57,6 +59,7 @@ const Register = () => {
         setPasswordError('');
         await createUserWithEmailAndPassword(email, password)
         await updateProfile({displayName: name});
+        
     }
     useEffect(()=>{
       if(user){

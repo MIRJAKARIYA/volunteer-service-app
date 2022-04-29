@@ -23,14 +23,8 @@ const Header = () => {
           <Link className="mr-8 font-semibold" to="/home">
             Home
           </Link>
-          <Link className="mr-8 font-semibold" to="/home">
-            Donation
-          </Link>
-          <Link className="mr-8 font-semibold" to="/home">
+          <Link className="mr-8 font-semibold" to="/events">
             Events
-          </Link>
-          <Link className="mr-8 font-semibold" to="/home">
-            Blog
           </Link>
           <Link className="mr-8 font-semibold" to="/addevent">
             Add Event
@@ -60,18 +54,13 @@ const Header = () => {
               </Link>
             </li>
             <li>
-              <Link to="/" className="justify-between">
-                Donation
-              </Link>
-            </li>
-            <li>
               <Link to="/addevent" className="justify-between">
                 Add Event
               </Link>
             </li>
             <li>
-              <Link to="/" className="justify-between">
-                Blog
+              <Link to="/events" className="justify-between">
+                Events
               </Link>
             </li>
             <li>
