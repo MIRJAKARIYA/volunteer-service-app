@@ -20,7 +20,6 @@ const Login = () => {
     useSendPasswordResetEmail(auth);
   const [token] = useToken(user?.user?.email)
 
-  console.log(user?.user?.email)
   const handleForgotPassword = async () => {
     const email = emailRef.current.value;
     await sendPasswordResetEmail(email);

@@ -5,6 +5,7 @@ import github from '../../images/social-media-images/github.png';
 import { useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import { useSignInWithGoogle, useSignInWithGithub, useSignInWithFacebook } from 'react-firebase-hooks/auth';
+import useToken from '../hooks/useToken';
 
 const SocialLogin = () => {
     const location = useLocation();
@@ -12,6 +13,7 @@ const SocialLogin = () => {
     const [signInWithGoogle, user1] = useSignInWithGoogle(auth);
     const [signInWithGithub, user2] = useSignInWithGithub(auth);
     const [signInWithFacebook, user3] = useSignInWithFacebook(auth);
+    const [token] = useToken(user1?.user?.email|| user2?.user?.email || user3?.user?.email)
     const navigate = useNavigate();
     useEffect(()=>{
         if(user1 || user2 || user3){
