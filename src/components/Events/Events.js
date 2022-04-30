@@ -5,6 +5,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import auth from "../../firebase.init";
+import PageTitle from "../PageTitle/PageTitle";
 import SingleEvent from "../SingleEvent/SingleEvent";
 
 const Events = () => {
@@ -33,34 +34,37 @@ const Events = () => {
       }
     };
     getEvents();
-  }, [user, navigate,del]);
+  }, [user, navigate, del]);
 
-  const handleCancelButton = (id) =>{
-    console.log(id)
-    fetch(`http://localhost:5000/service/${id}`,{
-        method:'DELETE',
+  const handleCancelButton = (id) => {
+    console.log(id);
+    fetch(`http://localhost:5000/service/${id}`, {
+      method: "DELETE",
     })
-    .then(res => res.json())
-    .then(data=> {
-        console.log(data)
-        toast('Successfully removed')
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        toast("Successfully removed");
         setDel(!del);
-    })
-  }
+      });
+  };
 
   return (
-    <div className="bg-slate-200 h-screen flow-root">
-      <div className=" grid grid-cols-1 gap-5 md:grid-cols-2 mt-5 w-[100%] mx-auto justify-items-center max-w-[715px]">
-        {events.map((addedEvent) => (
-          <SingleEvent
-            key={addedEvent._id}
-            addedEvent={addedEvent}
-            handleCancelButton={handleCancelButton}
-          ></SingleEvent>
-        ))}
+    <>
+    <PageTitle title='Events'></PageTitle>
+      <div className="bg-slate-200 h-screen flow-root">
+        <div className=" grid grid-cols-1 gap-5 md:grid-cols-2 mt-5 w-[100%] mx-auto justify-items-center max-w-[715px]">
+          {events.map((addedEvent) => (
+            <SingleEvent
+              key={addedEvent._id}
+              addedEvent={addedEvent}
+              handleCancelButton={handleCancelButton}
+            ></SingleEvent>
+          ))}
+        </div>
+        <ToastContainer></ToastContainer>
       </div>
-      <ToastContainer></ToastContainer>
-    </div>
+    </>
   );
 };
 

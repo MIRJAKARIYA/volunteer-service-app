@@ -6,11 +6,13 @@ import "./Header.css";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
 import { signOut } from "firebase/auth";
+import UserCustomImage from "../UserCustomImage/UserCustomImage";
 const Header = () => {
   const [user] = useAuthState(auth);
   const handleSignOut = () =>{
     signOut(auth);
   }
+  console.log(user)
   return (
     <div className="navbar bg-base-100 max-w-[1400px] mx-auto">
       <div className="flex-1">
@@ -42,7 +44,9 @@ const Header = () => {
             Login
           </Link>
           }
-          <img src={user?.photoURL} className='w-[40px] rounded-full' alt="" />
+          {
+            user?.photoURL?<img src={user?.photoURL} className='w-[40px] rounded-full' alt="" />:user?<UserCustomImage letterHeight={'40px'} letterWidth={'40px'} firstLetter={user?.displayName?.slice(0,1)}></UserCustomImage>:''
+          }
         </div>
         <div className="dropdown dropdown-end">
           <button className="md:hidden block text-2xl">
@@ -81,7 +85,9 @@ const Header = () => {
               }
             </li>
             <li>
-              <img src={user?.photoURL} className='w-[80px]' style={{borderRadius: '50%'}} alt="" />
+              {
+                user?.photoURL?<img src={user?.photoURL} className='w-[80px]' style={{borderRadius: '50%'}} alt="" />:user?<UserCustomImage letterHeight={'50px'} letterWidth={'50px'} letterMargin={'12px'} firstLetter={user?.displayName?.slice(0,1)}></UserCustomImage>:''
+              }
             </li>
           </ul>
         </div>

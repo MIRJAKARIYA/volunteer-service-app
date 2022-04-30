@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Footer from "../Footer/Footer";
+import PageTitle from "../PageTitle/PageTitle";
 import SingleVolunteer from "../SingleVolunteer/SingleVolunteer";
 
 const Home = () => {
@@ -11,6 +12,7 @@ const Home = () => {
   }, []);
   return (
     <>
+      <PageTitle title='Home'></PageTitle>
       <h2 className="text-center text-xl sm:text-2xl md:text-4xl font-bold my-6">
         I GROW BY HELPING PEOPLE IN NEED
       </h2>

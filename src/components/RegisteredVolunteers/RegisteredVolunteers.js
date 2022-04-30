@@ -5,6 +5,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import auth from "../../firebase.init";
+import PageTitle from "../PageTitle/PageTitle";
 import RegisteredVolunteer from "../RegisteredVolunteer/RegisteredVolunteer";
 
 const RegisteredVolunteers = () => {
@@ -46,37 +47,40 @@ const RegisteredVolunteers = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-          if(data?.acknowledged === true){
-              setIsDeleted(!isDeleted)
-              toast('Volunter removed successfully')
-          }
+        if (data?.acknowledged === true) {
+          setIsDeleted(!isDeleted);
+          toast("Volunter removed successfully");
+        }
       });
   };
 
   return (
-    <div className="overflow-x-auto">
-      <table className="table md:w-[60%] mx-auto mt-10">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Email Id</th>
-            <th>Registation date</th>
-            <th>Volunteer list</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          {volunteerList.map((volunteer) => (
-            <RegisteredVolunteer
-              key={volunteer._id}
-              volunteer={volunteer}
-              handleOwnVolunteer={handleOwnVolunteer}
-            ></RegisteredVolunteer>
-          ))}
-        </tbody>
-      </table>
-      <ToastContainer></ToastContainer>
-    </div>
+    <>
+    <PageTitle title='Volunteer List'></PageTitle>
+      <div className="overflow-x-auto">
+        <table className="table md:w-[60%] mx-auto mt-10">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email Id</th>
+              <th>Registation date</th>
+              <th>Volunteer list</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {volunteerList.map((volunteer) => (
+              <RegisteredVolunteer
+                key={volunteer._id}
+                volunteer={volunteer}
+                handleOwnVolunteer={handleOwnVolunteer}
+              ></RegisteredVolunteer>
+            ))}
+          </tbody>
+        </table>
+        <ToastContainer></ToastContainer>
+      </div>
+    </>
   );
 };
 
