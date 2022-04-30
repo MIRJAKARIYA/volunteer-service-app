@@ -13,7 +13,7 @@ const RegisteredVolunteer = ({volunteer,handleOwnVolunteer}) => {
             <td>{registrationdate}</td>   
             <td>{volunteerservice}</td>   
             <td>
-                <button disabled={user.email === email && true} className={`${user.email === email?'text-red-700':'text-red-200'} ml-4 text-2xl`}>{<AiTwotoneDelete></AiTwotoneDelete>}</button>
+                <button disabled={user.email === email?false:true} className={`${user.email === email?'text-red-700':'text-red-200'} ml-4 text-2xl`} onClick={()=>handleOwnVolunteer(_id)}>{<AiTwotoneDelete></AiTwotoneDelete>}</button>
             </td>   
         </tr>
     );

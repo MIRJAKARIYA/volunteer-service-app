@@ -3,12 +3,14 @@ import { signOut } from "firebase/auth";
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
 import auth from "../../firebase.init";
 import RegisteredVolunteer from "../RegisteredVolunteer/RegisteredVolunteer";
 
 const RegisteredVolunteers = () => {
   const [user] = useAuthState(auth);
   const [volunteerList, setVolunteerList] = useState([]);
+  const [isDeleted, setIsDeleted] = useState(false);
   const navigate = useNavigate();
   useEffect(() => {
     const getVolunteerList = async () => {
@@ -32,20 +34,30 @@ const RegisteredVolunteers = () => {
       }
     };
     getVolunteerList();
-  }, [user, navigate]);
+  }, [user, navigate, isDeleted]);
 
   //handleOwnVolunteer
   const handleOwnVolunteer = (id) => {
-    console.log(id);
+    fetch(`http://localhost:5000/deleteregisteredvolunteer/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+          if(data?.acknowledged === true){
+              setIsDeleted(!isDeleted)
+              toast('Volunter removed successfully')
+          }
+      });
   };
 
-  console.log(volunteerList);
   return (
-    <div class="overflow-x-auto">
-      <table class="table md:w-[80%] mx-auto">
+    <div className="overflow-x-auto">
+      <table className="table md:w-[80%] mx-auto">
         <thead>
           <tr>
-
             <th>Name</th>
             <th>Email Id</th>
             <th>Registation date</th>
@@ -54,7 +66,7 @@ const RegisteredVolunteers = () => {
           </tr>
         </thead>
         <tbody>
-        {volunteerList.map((volunteer) => (
+          {volunteerList.map((volunteer) => (
             <RegisteredVolunteer
               key={volunteer._id}
               volunteer={volunteer}
@@ -63,6 +75,7 @@ const RegisteredVolunteers = () => {
           ))}
         </tbody>
       </table>
+      <ToastContainer></ToastContainer>
     </div>
   );
 };

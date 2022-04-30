@@ -24,7 +24,6 @@ const ServiceDetail = () => {
     const volunteerservice = e.target.service.value; 
     const name = e.target.name.value;
     const registrationdate = e.target.date.value;
-    console.log(email, volunteerservice, name,registrationdate)
     const volunteer = {
       name:name,
       email:email,
@@ -41,16 +40,15 @@ const ServiceDetail = () => {
       })
       .then(res=> res.json())
       .then(data => {
-        console.log(data)
         if(data?.message === 'Forbidden Access'){
           signOut(auth);
           navigate('/login')
         }
         else if(data?.acknowledged === true){
           toast(`Registration successfull for ${singleService.service}`)
-          console.log('data added')
         }
       })
+      e.target.reset()
   };
   return (
     <div className="hero min-h-screen bg-base-200">
