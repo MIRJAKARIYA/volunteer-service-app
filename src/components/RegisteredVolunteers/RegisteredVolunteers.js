@@ -55,7 +55,7 @@ const RegisteredVolunteers = () => {
 
   return (
     <div className="overflow-x-auto">
-      <table className="table md:w-[80%] mx-auto">
+      <table className="table md:w-[60%] mx-auto mt-10">
         <thead>
           <tr>
             <th>Name</th>

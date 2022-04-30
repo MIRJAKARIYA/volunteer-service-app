@@ -54,7 +54,7 @@ const AddEvent = () => {
               </label>
               <input
                 type="text"
-                placeholder="Type here"
+                placeholder="Event Title"
                 className="input input-bordered input-secondary w-full"
                 name="title" required
               />
@@ -65,7 +65,7 @@ const AddEvent = () => {
               </label>
               <textarea
                 className="textarea textarea-secondary w-full"
-                placeholder="Bio"
+                placeholder="Enter Designation"
                 name="description" required
               />
             </div>
@@ -77,7 +77,7 @@ const AddEvent = () => {
               </label>
               <input
                 type="date"
-                placeholder="Type here"
+                placeholder="Event Date"
                 className="input input-bordered input-secondary  w-full"
                 name="date" required
               />
@@ -86,7 +86,7 @@ const AddEvent = () => {
               <label htmlFor="banner block">Banner</label>
               <input
                 type="text"
-                placeholder="Type here"
+                placeholder="Enter the photo URL for banner"
                 className="input input-bordered input-secondary w-full"
                 name="banner" required
               />
