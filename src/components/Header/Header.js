@@ -26,6 +26,10 @@ const Header = () => {
           <Link className="mr-8 font-semibold" to="/events">
             Events
           </Link>
+          <Link className="mr-8 font-semibold" to="/registeredvolunteers">
+            Volunteer List
+          </Link>
+
           <Link className="mr-8 font-semibold" to="/addevent">
             Add Event
           </Link>
@@ -54,15 +58,21 @@ const Header = () => {
               </Link>
             </li>
             <li>
-              <Link to="/addevent" className="justify-between">
-                Add Event
-              </Link>
-            </li>
-            <li>
               <Link to="/events" className="justify-between">
                 Events
               </Link>
             </li>
+            <li>
+              <Link to="/registeredvolunteers" className="justify-between">
+                Volunteer List
+              </Link>
+            </li>
+            <li>
+              <Link to="/addevent" className="justify-between">
+                Add Event
+              </Link>
+            </li>
+            
             <li>
               {
                 user?<button onClick={handleSignOut}>Sign Out</button>:<Link to="/login" className="justify-between">

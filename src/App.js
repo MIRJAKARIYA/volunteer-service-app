@@ -11,6 +11,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
 import RequireAuth from './components/RequireAuth/RequireAuth';
 import Events from './components/Events/Events';
+import RegisteredVolunteers from './components/RegisteredVolunteers/RegisteredVolunteers';
 
 function App() {
   return (
@@ -34,6 +35,11 @@ function App() {
         <Route path='/addevent' element={
           <RequireAuth>
             <AddEvent></AddEvent>
+          </RequireAuth>
+        }></Route>
+        <Route path='registeredvolunteers' element={
+          <RequireAuth>
+            <RegisteredVolunteers></RegisteredVolunteers>
           </RequireAuth>
         }></Route>
         <Route path='/emailverification' element={<EmailVerification></EmailVerification>}></Route>
