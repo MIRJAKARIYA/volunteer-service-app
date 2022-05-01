@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "./SingleVolunteer.css";
 import { TiArrowForward } from 'react-icons/ti'
 import { useNavigate } from "react-router-dom";
 
@@ -17,12 +16,12 @@ const SingleVolunteer = ({ serv }) => {
     <div className="">
       <div className="card w-[400px] bg-base-100 shadow-xl">
         <figure>
-          <img src={image} className="w-full h-60 service-image" alt="" />
+          <img src={image} className="w-full h-60 object-cover" alt="" />
         </figure>
         <div className="card-body">
           <div className="flex justify-between">
             <h2 className="card-title">{service}</h2>
-            <div className=" text-blue-700 border-2 rounded-3xl py-1 px-2 border-blue-700 hover:bg-blue-700 hover:text-white duration-500" style={{cursor:'pointer'}}>
+            <div className=" text-blue-700 border-2 rounded-3xl py-1 pl-3 pr-1 border-blue-700 hover:bg-blue-700 hover:text-white duration-500" style={{cursor:'pointer'}}>
               <p onClick={()=>handleCheckout(_id)} className="mr-2 font-semibold flex items-center justify-between">Checkout<TiArrowForward className="text-lg"></TiArrowForward></p>
             </div>
           </div>

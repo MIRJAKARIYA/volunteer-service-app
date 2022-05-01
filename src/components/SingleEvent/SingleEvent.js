@@ -1,8 +1,7 @@
 import React from 'react';
 
 const SingleEvent = ({addedEvent,handleCancelButton}) => {
-    console.log(addedEvent)
-    const {banner,date,description,title,_id} = addedEvent;
+    const {banner,date,title,_id} = addedEvent;
     return (
         <div>
             <div className='flex p-3 w-[350px] bg-white rounded-xl'>

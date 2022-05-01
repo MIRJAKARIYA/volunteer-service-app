@@ -135,7 +135,7 @@ const Register = () => {
           </form>
           <SocialLogin></SocialLogin>
         </div>
-        <Link to="/login" className="block text-center text-blue-700 mt-3">
+        <Link to="/login" className="block text-center underline text-blue-700 mt-3">
           already have an account?
         </Link>
       </div>

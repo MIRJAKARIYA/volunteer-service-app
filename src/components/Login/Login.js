@@ -100,7 +100,7 @@ const Login = () => {
           <ToastContainer />
           <SocialLogin></SocialLogin>
         </div>
-        <Link to="/register" className="block text-center mt-3 text-blue-700">
+        <Link to="/register" className="block text-center mt-3 underline text-blue-700">
           create a new account...
         </Link>
       </div>

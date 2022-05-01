@@ -23,7 +23,6 @@ const Events = () => {
             authorization: `Bearer ${localStorage.getItem("ACCESS_TOKEN")}`,
           },
         });
-        console.log(data);
         setEvents(data);
       } catch (error) {
         console.log(error.message);

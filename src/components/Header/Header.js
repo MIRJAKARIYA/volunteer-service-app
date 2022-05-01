@@ -12,7 +12,6 @@ const Header = () => {
   const handleSignOut = () =>{
     signOut(auth);
   }
-  console.log(user)
   return (
     <div className="navbar bg-base-100 max-w-[1400px] mx-auto">
       <div className="flex-1">
@@ -22,17 +21,19 @@ const Header = () => {
       </div>
       <div className="flex-none gap-2">
         <div className="md:flex items-center hidden">
-          <Link className="mr-8 font-semibold" to="/home">
+          <Link className="mr-8 font-semibold hover:text-red-800 duration-200" to="/home">
             Home
           </Link>
-          <Link className="mr-8 font-semibold" to="/events">
-            Events
-          </Link>
-          <Link className="mr-8 font-semibold" to="/registeredvolunteers">
+          
+          <Link className="mr-8 font-semibold hover:text-red-800 duration-200" to="/registeredvolunteers">
             Volunteer List
           </Link>
 
-          <Link className="mr-8 font-semibold" to="/addevent">
+          <Link className="mr-8 font-semibold hover:text-red-800 duration-200" to="/events">
+            Events
+          </Link>
+
+          <Link className="mr-8 font-semibold hover:text-red-800 duration-200" to="/addevent">
             Add Event
           </Link>
           
@@ -45,7 +46,7 @@ const Header = () => {
           </Link>
           }
           {
-            user?.photoURL?<img src={user?.photoURL} className='w-[40px] rounded-full' alt="" />:user?<UserCustomImage letterHeight={'40px'} letterWidth={'40px'} firstLetter={user?.displayName?.slice(0,1)}></UserCustomImage>:''
+            user?.photoURL?<img src={user?.photoURL} className='w-[40px] rounded-full' alt="" />:user?.emailVerified?<UserCustomImage letterHeight={'40px'} letterWidth={'40px'} firstLetter={user?.displayName?.slice(0,1)}></UserCustomImage>:''
           }
         </div>
         <div className="dropdown dropdown-end">
@@ -62,13 +63,13 @@ const Header = () => {
               </Link>
             </li>
             <li>
-              <Link to="/events" className="justify-between">
-                Events
+              <Link to="/registeredvolunteers" className="justify-between">
+                Volunteer List
               </Link>
             </li>
             <li>
-              <Link to="/registeredvolunteers" className="justify-between">
-                Volunteer List
+              <Link to="/events" className="justify-between">
+                Events
               </Link>
             </li>
             <li>
@@ -86,7 +87,7 @@ const Header = () => {
             </li>
             <li>
               {
-                user?.photoURL?<img src={user?.photoURL} className='w-[80px]' style={{borderRadius: '50%'}} alt="" />:user?<UserCustomImage letterHeight={'50px'} letterWidth={'50px'} letterMargin={'12px'} firstLetter={user?.displayName?.slice(0,1)}></UserCustomImage>:''
+                user?.photoURL?<img src={user?.photoURL} className='w-[80px]' style={{borderRadius: '50%'}} alt="" />:user?.emailVerified?<UserCustomImage letterHeight={'50px'} letterWidth={'50px'} letterMargin={'12px'} firstLetter={user?.displayName?.slice(0,1)}></UserCustomImage>:''
               }
             </li>
           </ul>
