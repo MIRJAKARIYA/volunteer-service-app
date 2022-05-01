@@ -23,7 +23,7 @@ const AddEvent = () => {
       email: user?.email,
     };
 
-    fetch("http://localhost:5000/service", {
+    fetch("https://radiant-peak-60741.herokuapp.com/service", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -33,7 +33,6 @@ const AddEvent = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         if (data?.acknowledged) {
           toast("Event added successfully 😊");
         } else {
@@ -44,7 +43,7 @@ const AddEvent = () => {
   };
   return (
     <>
-    <PageTitle title='Add Event'></PageTitle>
+      <PageTitle title="Add Event"></PageTitle>
       <div className="add-event-container flow-root">
         <form onSubmit={handleAddEvent}>
           <div className="flex flex-col md:flex-row justify-between md:w-[50%] mx-auto p-10 w-[95%] bg-white mt-32 rounded-xl">

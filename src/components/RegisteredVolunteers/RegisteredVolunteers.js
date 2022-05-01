@@ -16,7 +16,7 @@ const RegisteredVolunteers = () => {
   useEffect(() => {
     const getVolunteerList = async () => {
       const email = user.email;
-      const url = `http://localhost:5000/volunteers?email=${email}`;
+      const url = `https://radiant-peak-60741.herokuapp.com/volunteers?email=${email}`;
       try {
         const { data } = await axios.get(url, {
           headers: {
@@ -39,12 +39,15 @@ const RegisteredVolunteers = () => {
 
   //handleOwnVolunteer
   const handleOwnVolunteer = (id) => {
-    fetch(`http://localhost:5000/deleteregisteredvolunteer/${id}`, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
+    fetch(
+      `https://radiant-peak-60741.herokuapp.com/deleteregisteredvolunteer/${id}`,
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data?.acknowledged === true) {
@@ -56,7 +59,7 @@ const RegisteredVolunteers = () => {
 
   return (
     <>
-    <PageTitle title='Volunteer List'></PageTitle>
+      <PageTitle title="Volunteer List"></PageTitle>
       <div className="overflow-x-auto">
         <table className="table md:w-[60%] mx-auto mt-10">
           <thead>

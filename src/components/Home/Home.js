@@ -6,13 +6,13 @@ import SingleVolunteer from "../SingleVolunteer/SingleVolunteer";
 const Home = () => {
   const [services, setServices] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/services")
+    fetch("https://radiant-peak-60741.herokuapp.com/services")
       .then((res) => res.json())
       .then((data) => setServices(data));
   }, []);
   return (
     <>
-      <PageTitle title='Home'></PageTitle>
+      <PageTitle title="Home"></PageTitle>
       <h2 className="text-center text-xl sm:text-2xl md:text-4xl font-bold my-6">
         I GROW BY HELPING PEOPLE IN NEED
       </h2>

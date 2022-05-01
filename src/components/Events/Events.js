@@ -16,7 +16,7 @@ const Events = () => {
   useEffect(() => {
     const getEvents = async () => {
       const email = user?.email;
-      const url = `http://localhost:5000/addedServices?email=${email}`;
+      const url = `https://radiant-peak-60741.herokuapp.com/addedServices?email=${email}`;
       try {
         const { data } = await axios.get(url, {
           headers: {
@@ -37,7 +37,7 @@ const Events = () => {
 
   const handleCancelButton = (id) => {
     console.log(id);
-    fetch(`http://localhost:5000/service/${id}`, {
+    fetch(`https://radiant-peak-60741.herokuapp.com/service/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
@@ -50,7 +50,7 @@ const Events = () => {
 
   return (
     <>
-    <PageTitle title='Events'></PageTitle>
+      <PageTitle title="Events"></PageTitle>
       <div className="bg-slate-200 h-screen flow-root">
         <div className=" grid grid-cols-1 gap-5 md:grid-cols-2 mt-5 w-[100%] mx-auto justify-items-center max-w-[715px]">
           {events.map((addedEvent) => (

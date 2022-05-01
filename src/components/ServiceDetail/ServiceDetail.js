@@ -14,7 +14,7 @@ const ServiceDetail = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`http://localhost:5000/service/${serviceId}`)
+    fetch(`https://radiant-peak-60741.herokuapp.com/service/${serviceId}`)
       .then((res) => res.json())
       .then((data) => setSingleService(data));
   }, [serviceId]);
@@ -31,14 +31,17 @@ const ServiceDetail = () => {
       registrationdate: registrationdate,
       volunteerservice: volunteerservice,
     };
-    fetch(`http://localhost:5000/addvolunteers?email=${email}`, {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-        authorization: `Bearer ${localStorage.getItem("ACCESS_TOKEN")}`,
-      },
-      body: JSON.stringify(volunteer),
-    })
+    fetch(
+      `https://radiant-peak-60741.herokuapp.com/addvolunteers?email=${email}`,
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${localStorage.getItem("ACCESS_TOKEN")}`,
+        },
+        body: JSON.stringify(volunteer),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data?.message === "Forbidden Access") {
@@ -52,7 +55,7 @@ const ServiceDetail = () => {
   };
   return (
     <>
-    <PageTitle title='Service Detail'></PageTitle>
+      <PageTitle title="Service Detail"></PageTitle>
       <div className="hero min-h-screen bg-base-200">
         <div className="hero-content flex-col md:flex-row-reverse">
           <div className="text-center md:w-1/2 mt-16 lg:text-left h-[600px] p-4">
